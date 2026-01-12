@@ -30,7 +30,7 @@ tsParticles.load("tsparticles", {
   fpsLimit: 60,
   detectRetina: true,
 
-  /* 🎯 ULTRA MALI BUFFER + GLATKO */
+  /* 🎯 BLAGO VEĆI BUFFER + GLATKO */
   interactivity: {
     detectsOn: "window",
     events: {
@@ -39,24 +39,19 @@ tsParticles.load("tsparticles", {
       resize: true
     },
     modes: {
-      /* bubble = najfinije rastavljanje/sastavljanje */
       bubble: {
-        distance: 60,        // 🔥 JOŠ MANJI BUFFER (ranije 90)
-        duration: 1.8,       // duže = mekši povratak
-        size: 3.6,           // diskretno povećanje
+        distance: 75,     // ⬅️ malo veći (ranije 60)
+        duration: 1.6,
+        size: 3.6,
         opacity: 1
       },
-
-      /* grab = blago "privlačenje" linija */
       grab: {
-        distance: 120,       // smanjeno (ranije 170)
-        links: { opacity: 0.75 }
+        distance: 140,    // ⬅️ malo veći (ranije 120)
+        links: { opacity: 0.7 }
       },
-
-      /* klik = jedini jači impuls */
       repulse: {
-        distance: 140,
-        duration: 0.35,
+        distance: 150,
+        duration: 0.32,
         speed: 3
       }
     }
@@ -68,8 +63,10 @@ tsParticles.load("tsparticles", {
       density: { enable: true, area: 900 }
     },
 
-    /* TAČKE OSTAJU TAČKE */
+    /* TAČKE SU TAČKE */
     shape: { type: "circle" },
+
+    /* SAMO PLAVA BOJA */
     color: { value: "#345F98" },
 
     size: {
@@ -78,18 +75,18 @@ tsParticles.load("tsparticles", {
 
     opacity: { value: 0.9 },
 
-    /* LINIJE – plava + žuta kombinacija */
+    /* LINIJE – SAMO PLAVE */
     links: {
       enable: true,
-      color: { value: ["#345F98", "#F0B400"] },
-      distance: 185,
+      color: "#345F98",
+      distance: 190,
       opacity: 0.22,
       width: 1
     },
 
     move: {
       enable: true,
-      speed: 2.2,           // ⬅️ sporije = gracioznije
+      speed: 2.2,
       outModes: { default: "out" }
     }
   }
