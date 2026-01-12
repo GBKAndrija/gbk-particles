@@ -30,19 +30,34 @@ tsParticles.load("tsparticles", {
   fpsLimit: 60,
   detectRetina: true,
 
-  /* 🎯 VRLO MALI BUFFER OKO KURSORA */
+  /* 🎯 ULTRA MALI BUFFER + GLATKO */
   interactivity: {
     detectsOn: "window",
     events: {
-      onHover: { enable: true, mode: "repulse" },
+      onHover: { enable: true, mode: ["bubble", "grab"] },
       onClick: { enable: true, mode: "repulse" },
       resize: true
     },
     modes: {
+      /* bubble = najfinije rastavljanje/sastavljanje */
+      bubble: {
+        distance: 60,        // 🔥 JOŠ MANJI BUFFER (ranije 90)
+        duration: 1.8,       // duže = mekši povratak
+        size: 3.6,           // diskretno povećanje
+        opacity: 1
+      },
+
+      /* grab = blago "privlačenje" linija */
+      grab: {
+        distance: 120,       // smanjeno (ranije 170)
+        links: { opacity: 0.75 }
+      },
+
+      /* klik = jedini jači impuls */
       repulse: {
-        distance: 80,        // 🔥 JOŠ MANJI buffer (precizno)
-        duration: 0.22,
-        speed: 3.5
+        distance: 140,
+        duration: 0.35,
+        speed: 3
       }
     }
   },
@@ -53,9 +68,9 @@ tsParticles.load("tsparticles", {
       density: { enable: true, area: 900 }
     },
 
-    /* TAČKE OSTAJU ISTE (kao pre izmena) */
+    /* TAČKE OSTAJU TAČKE */
     shape: { type: "circle" },
-    color: { value: "#345F98" },   // 🔵 JEDNA boja tačaka
+    color: { value: "#345F98" },
 
     size: {
       value: { min: 1.5, max: 3 }
@@ -63,20 +78,18 @@ tsParticles.load("tsparticles", {
 
     opacity: { value: 0.9 },
 
-    /* LINIJE SU PLAVE + ŽUTE */
+    /* LINIJE – plava + žuta kombinacija */
     links: {
       enable: true,
-      color: {
-        value: ["#345F98", "#F0B400"]  // 🔵🟡 kombinacija SAMO ZA LINIJE
-      },
-      distance: 190,
+      color: { value: ["#345F98", "#F0B400"] },
+      distance: 185,
       opacity: 0.22,
       width: 1
     },
 
     move: {
       enable: true,
-      speed: 2.6,
+      speed: 2.2,           // ⬅️ sporije = gracioznije
       outModes: { default: "out" }
     }
   }
