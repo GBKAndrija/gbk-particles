@@ -30,28 +30,18 @@ tsParticles.load("tsparticles", {
   fpsLimit: 60,
   detectRetina: true,
 
-  /* 🎯 HOVER = kidanje / zgušnjavanje */
+  /* 🎯 PRELAZ MIŠEM = precizno "kidanje" */
   interactivity: {
     detectsOn: "window",
     events: {
-      onHover: {
-        enable: true,
-        mode: ["grab", "repulse"]
-      },
-      onClick: {
-        enable: true,
-        mode: "repulse"
-      },
+      onHover: { enable: true, mode: "repulse" },
+      onClick: { enable: true, mode: "repulse" },
       resize: true
     },
     modes: {
-      grab: {
-        distance: 220,
-        links: { opacity: 1 }    // 🔥 blizu miša = jake linije
-      },
       repulse: {
-        distance: 260,
-        duration: 0.3,
+        distance: 120,      // 🔥 mali buffer (probaj 90–130)
+        duration: 0.25,
         speed: 3
       }
     }
@@ -59,28 +49,30 @@ tsParticles.load("tsparticles", {
 
   particles: {
     number: {
-      value: 100,
+      value: 120,          // 🔹 srednja gustina
       density: { enable: true, area: 900 }
     },
 
-    shape: { type: "triangle" },
+    /* TAČKE SU TAČKE */
+    shape: { type: "circle" },
 
-    /* 🔵🟡 kombinacija boja */
+    /* PLAVA + ŽUTA (diskretno) */
     color: {
       value: ["#345F98", "#F0B400"]
     },
 
     size: {
-      value: { min: 3.5, max: 6 }
+      value: { min: 1.5, max: 3 }   // jasno vidljive tačke
     },
 
-    opacity: { value: 1 },
+    opacity: { value: 0.9 },
 
+    /* LINIJAMA NASTAJU "TROUGLOVI" */
     links: {
       enable: true,
       color: "#345F98",
-      distance: 190,       // 🔑 kratko = vizuelno jače blizu
-      opacity: 0.18,       // 🔑 slabije daleko
+      distance: 190,        // kontrolisana mreža
+      opacity: 0.22,
       width: 1
     },
 
