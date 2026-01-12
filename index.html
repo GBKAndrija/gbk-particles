@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GBK Mesh</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GBK Network</title>
 
 <style>
 html, body {
@@ -30,54 +30,63 @@ tsParticles.load("tsparticles", {
   fpsLimit: 60,
   detectRetina: true,
 
-  /* 👉 PRAVA INTERAKCIJA */
+  /* 🎯 HOVER = kidanje / zgušnjavanje */
   interactivity: {
     detectsOn: "window",
     events: {
-      onHover: { enable: true, mode: "grab" },   // prelaz mišem
-      onClick: { enable: true, mode: "repulse" },// klik
+      onHover: {
+        enable: true,
+        mode: ["grab", "repulse"]
+      },
+      onClick: {
+        enable: true,
+        mode: "repulse"
+      },
       resize: true
     },
     modes: {
       grab: {
-        distance: 260,
-        links: { opacity: 1 }
+        distance: 220,
+        links: { opacity: 1 }    // 🔥 blizu miša = jake linije
       },
       repulse: {
-        distance: 200,
-        duration: 0.4
+        distance: 260,
+        duration: 0.3,
+        speed: 3
       }
     }
   },
 
   particles: {
     number: {
-      value: 160,                 // 🔹 dosta tačaka, ali kontrolisano
+      value: 100,
       density: { enable: true, area: 900 }
     },
 
-    shape: { type: "circle" },    // sitne tačke
-    color: { value: "#345F98" },  // PLAVA kao na slici
+    shape: { type: "triangle" },
+
+    /* 🔵🟡 kombinacija boja */
+    color: {
+      value: ["#345F98", "#F0B400"]
+    },
 
     size: {
-      value: 1.2                  // ⬅️ vrlo male tačke (kao mesh čvorovi)
+      value: { min: 3.5, max: 6 }
     },
 
-    opacity: {
-      value: 0.9
-    },
+    opacity: { value: 1 },
 
     links: {
       enable: true,
       color: "#345F98",
-      distance: 190,              // 🔥 KLJUČ: kratka distanca = gust mesh
-      opacity: 0.25,               // tanke linije
+      distance: 190,       // 🔑 kratko = vizuelno jače blizu
+      opacity: 0.18,       // 🔑 slabije daleko
       width: 1
     },
 
     move: {
       enable: true,
-      speed: 2.4,                  // sporo kretanje = stabilna mreža
+      speed: 2.6,
       outModes: { default: "out" }
     }
   }
