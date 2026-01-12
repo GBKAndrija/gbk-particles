@@ -30,7 +30,7 @@ tsParticles.load("tsparticles", {
   fpsLimit: 60,
   detectRetina: true,
 
-  /* 🎯 PRELAZ MIŠEM = precizno "kidanje" */
+  /* 🎯 VRLO MALI BUFFER OKO KURSORA */
   interactivity: {
     detectsOn: "window",
     events: {
@@ -40,38 +40,36 @@ tsParticles.load("tsparticles", {
     },
     modes: {
       repulse: {
-        distance: 120,      // 🔥 mali buffer (probaj 90–130)
-        duration: 0.25,
-        speed: 3
+        distance: 80,        // 🔥 JOŠ MANJI buffer (precizno)
+        duration: 0.22,
+        speed: 3.5
       }
     }
   },
 
   particles: {
     number: {
-      value: 120,          // 🔹 srednja gustina
+      value: 120,
       density: { enable: true, area: 900 }
     },
 
-    /* TAČKE SU TAČKE */
+    /* TAČKE OSTAJU ISTE (kao pre izmena) */
     shape: { type: "circle" },
-
-    /* PLAVA + ŽUTA (diskretno) */
-    color: {
-      value: ["#345F98", "#F0B400"]
-    },
+    color: { value: "#345F98" },   // 🔵 JEDNA boja tačaka
 
     size: {
-      value: { min: 1.5, max: 3 }   // jasno vidljive tačke
+      value: { min: 1.5, max: 3 }
     },
 
     opacity: { value: 0.9 },
 
-    /* LINIJAMA NASTAJU "TROUGLOVI" */
+    /* LINIJE SU PLAVE + ŽUTE */
     links: {
       enable: true,
-      color: "#345F98",
-      distance: 190,        // kontrolisana mreža
+      color: {
+        value: ["#345F98", "#F0B400"]  // 🔵🟡 kombinacija SAMO ZA LINIJE
+      },
+      distance: 190,
       opacity: 0.22,
       width: 1
     },
