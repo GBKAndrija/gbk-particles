@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GBK Particles</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GBK Mesh</title>
 
 <style>
 html, body {
@@ -30,45 +30,58 @@ tsParticles.load("tsparticles", {
   fpsLimit: 60,
   detectRetina: true,
 
-  /* ✅ HOVER + CLICK interakcija */
+  /* 👉 PRAVA INTERAKCIJA */
   interactivity: {
     detectsOn: "window",
     events: {
-      onHover: { enable: true, mode: "grab" },
-      onClick: { enable: true, mode: "repulse" },
+      onHover: { enable: true, mode: "grab" },   // prelaz mišem
+      onClick: { enable: true, mode: "repulse" },// klik
       resize: true
     },
     modes: {
-      grab: { distance: 220, links: { opacity: 1 } },
-      repulse: { distance: 180, duration: 0.35 }
+      grab: {
+        distance: 260,
+        links: { opacity: 1 }
+      },
+      repulse: {
+        distance: 200,
+        duration: 0.4
+      }
     }
   },
 
   particles: {
     number: {
-      value: 90,                 /* 🔹 MANJE tačkica */
+      value: 160,                 // 🔹 dosta tačaka, ali kontrolisano
       density: { enable: true, area: 900 }
     },
 
-    shape: { type: "triangle" }, /* 🔺 TROUGLOVI */
+    shape: { type: "circle" },    // sitne tačke
+    color: { value: "#345F98" },  // PLAVA kao na slici
 
-    color: {
-      value: ["#345F98", "#F0B400"] /* 🔵 + 🟡 */
+    size: {
+      value: 1.2                  // ⬅️ vrlo male tačke (kao mesh čvorovi)
+    },
+
+    opacity: {
+      value: 0.9
     },
 
     links: {
       enable: true,
-      color: "#345F98",           /* linije plave */
-      distance: 260,
-      opacity: 0.55,
+      color: "#345F98",
+      distance: 190,              // 🔥 KLJUČ: kratka distanca = gust mesh
+      opacity: 0.25,               // tanke linije
       width: 1
     },
 
     move: {
       enable: true,
-      speed: 3.6,
+      speed: 2.4,                  // sporo kretanje = stabilna mreža
       outModes: { default: "out" }
-    },
-
-    size: {
-      value: { min: 4, max: 7
+    }
+  }
+});
+</script>
+</body>
+</html>
