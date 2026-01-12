@@ -3,23 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GBK Particles</title>
-
+<title>GBK Triangulated Mesh</title>
 <style>
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background: #ffffff;     /* BELA POZADINA */
-  overflow: hidden;
-}
-#tsparticles {
-  width: 100%;
-  height: 100%;
-}
+  html, body { margin:0; width:100%; height:100%; overflow:hidden; background:#fff; }
+  #tsparticles { width:100%; height:100%; }
 </style>
 </head>
-
 <body>
 <div id="tsparticles"></div>
 
@@ -30,62 +19,47 @@ tsParticles.load("tsparticles", {
   fpsLimit: 120,
   detectRetina: true,
 
-  /* 🔥 INTERAKTIVNO SA MIŠEM */
   interactivity: {
     detectsOn: "window",
     events: {
-      onHover: {
-        enable: true,
-        mode: "grab"
-      },
-      onClick: {
-        enable: true,
-        mode: "repulse"
-      },
+      onHover: { enable: true, mode: ["grab"] },
+      onClick: { enable: true, mode: ["repulse"] },
       resize: true
     },
     modes: {
-      grab: {
-        distance: 380,
-        links: { opacity: 1 }
-      },
-      repulse: {
-        distance: 260,
-        duration: 0.3
-      }
+      grab: { distance: 350, links: { opacity: 1 } },
+      repulse: { distance: 220, duration: 0.25 }
     }
   },
 
   particles: {
-    number: {
-      value: 220,                 /* 🔥 MNOGO VIŠE TAČKICA */
-      density: { enable: true, area: 800 }
+    number: { value: 260, density: { enable: true, area: 900 } },
+
+    // tačkice nek budu sitne i plave
+    color: { value: "#345F98" },
+    shape: { type: "circle" },
+    size: { value: { min: 1, max: 2 } },
+    opacity: { value: 0.9 },
+
+    move: {
+      enable: true,
+      speed: 7.5,
+      outModes: { default: "out" }
     },
-
-    shape: { type: "triangle" },
-
-    color: { value: "#345F98" },   /* PLAVA BOJA */
 
     links: {
       enable: true,
       color: "#345F98",
-      distance: 420,               /* 🔥 VEOMA ČESTO SPAJANJE */
-      opacity: 0.9,
-      width: 1
-    },
+      distance: 180,     // manja distance = "tvrđa" mreža i više trouglova u blizini
+      opacity: 0.45,
+      width: 1,
 
-    move: {
-      enable: true,
-      speed: 6.5,                  /* 🔥 BRZO KRETANJE */
-      outModes: { default: "out" }
-    },
-
-    size: {
-      value: { min: 1, max: 3 }
-    },
-
-    opacity: {
-      value: { min: 0.6, max: 1 }
+      // ✅ OVO je "PRAVI" triangulated look
+      triangles: {
+        enable: true,
+        color: "#345F98",
+        opacity: 0.16     // povećaj na 0.25 ako hoćeš punije trouglove
+      }
     }
   }
 });
